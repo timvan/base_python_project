@@ -11,6 +11,8 @@ all: help lint audit tests ## Run all
 help: ## Install make to use this file, then write "make [command]".
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
+# LINT
+
 .PHONY: lint
 lint: toml_sort isort black flake8 pylint mypy dockerfile_linter ## Run lint
 
@@ -38,8 +40,7 @@ pylint: ## Run pylint
 mypy: ## Run mypy
 	poetry run mypy --install-types --non-interactive .
 
-
-# ALL THINGS DOCKER
+# DOCKER
 
 .PHONY: dockerfile_linter
 dockerfile_linter: ## Run dockerfile_linter
