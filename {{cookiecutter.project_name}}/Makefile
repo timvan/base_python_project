@@ -34,7 +34,7 @@ flake8: ## Run flake8
 
 .PHONY: pylint
 pylint: ## Run pylint
-	poetry run pylint base_python_project
+	poetry run pylint {{cookiecutter.project_name}}
 
 .PHONY: mypy
 mypy: ## Run mypy
@@ -48,16 +48,16 @@ dockerfile_linter: ## Run dockerfile_linter
 
 .PHONY: docker_build
 docker_build: ## Build docker image
-	docker build . -t base_python_project
+	docker build . -t {{cookiecutter.project_name}}
 
 .PHONY: docker_run
 docker_run: docker_build ## Build and run image
-	docker run --env-file .env base_python_project
+	docker run --env-file .env {{cookiecutter.project_name}}
 
 .PHONY: docker_push
 docker_push: docker_build ## Push docker image to dev
-	docker tag base_python_project:latest AWS_ACCOUNT_ID.dkr.ecr.eu-west-1.amazonaws.com/base_python_project:latest
-	docker push AWS_ACCOUNT_ID.dkr.ecr.eu-west-1.amazonaws.com/base_python_project:latest
+	docker tag {{cookiecutter.project_name}}:latest AWS_ACCOUNT_ID.dkr.ecr.eu-west-1.amazonaws.com/{{cookiecutter.project_name}}:latest
+	docker push AWS_ACCOUNT_ID.dkr.ecr.eu-west-1.amazonaws.com/{{cookiecutter.project_name}}:latest
 
 # TESTS
 

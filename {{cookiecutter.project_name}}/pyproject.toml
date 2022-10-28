@@ -24,7 +24,7 @@ omit = [
 combine_as_imports = "true"
 force_grid_wrap = 0
 include_trailing_comma = "true"
-known_first_party = "base_python_project"
+known_first_party = "{{cookiecutter.project_name}}"
 line_length = 120
 multi_line_output = 3
 
@@ -40,7 +40,7 @@ warn_unused_configs = true
 authors = ["timv <timv@graphcore.ai>"]
 description = ""
 name = "base-python-project"
-packages = [{include = "base_python_project"}]
+packages = [{include = "{{cookiecutter.project_name}}"}]
 readme = "README.md"
 version = "0.1.0"
 
@@ -80,5 +80,5 @@ ignore-imports = "yes"
 min-similarity-lines = 6
 
 [tool.pytest.ini_options]
-addopts = "-v --cov=base_python_project --cov-report term-missing --no-cov-on-fail"
+addopts = "-v --cov={{cookiecutter.project_name}} --cov-report term-missing --no-cov-on-fail"
 testpaths = ["tests"]
