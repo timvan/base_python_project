@@ -39,7 +39,7 @@ warn_unused_configs = true
 [tool.poetry]
 authors = ["timv <timv@graphcore.ai>"]
 description = ""
-name = "base-python-project"
+name = "{{cookiecutter.project_name}}"
 packages = [{include = "{{cookiecutter.project_name}}"}]
 readme = "README.md"
 version = "0.1.0"
